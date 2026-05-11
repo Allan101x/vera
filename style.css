@@ -655,3 +655,134 @@ footer { background: var(--deep); border-top: 1px solid var(--border); padding: 
   .plan-card { padding: 24px 20px; }
   .testi-card { padding: 24px; }
 }
+
+/* ================================================
+   MOBILE TEXT OVERLAP FIXES
+   ================================================ */
+
+@media (max-width: 768px) {
+  /* Fix tech node text overlap */
+  .tech-node {
+    padding: 14px 16px;
+    gap: 12px;
+  }
+  
+  .tech-node-icon {
+    width: 40px;
+    height: 40px;
+    flex-shrink: 0;
+  }
+  
+  .tech-node-icon svg {
+    width: 20px;
+    height: 20px;
+  }
+  
+  .tech-node-label {
+    font-size: 13px;
+    white-space: normal;
+    word-break: break-word;
+  }
+  
+  .tech-node-sub {
+    font-size: 10px;
+    white-space: normal;
+    word-break: break-word;
+  }
+  
+  /* Fix feature card text */
+  .feat-title {
+    font-size: 16px;
+  }
+  
+  .feat-desc {
+    font-size: 12px;
+  }
+  
+  /* Fix pricing card text */
+  .plan-name {
+    font-size: 22px;
+  }
+  
+  .plan-amount {
+    font-size: 36px;
+  }
+  
+  .plan-feat span {
+    font-size: 12px;
+  }
+  
+  /* Fix hero text */
+  .hero-title {
+    font-size: clamp(32px, 8vw, 56px);
+    line-height: 1.2;
+  }
+  
+  .hero-sub {
+    font-size: 13px;
+    padding: 0 20px;
+  }
+  
+  /* Fix coverage stats */
+  .coverage-stats {
+    gap: 16px;
+  }
+  
+  .cov-stat-num {
+    font-size: clamp(28px, 5vw, 48px);
+  }
+  
+  .cov-stat-label {
+    font-size: 10px;
+  }
+  
+  /* Fix testimonials */
+  .testi-quote {
+    font-size: 13px;
+  }
+  
+  .testi-name {
+    font-size: 13px;
+  }
+  
+  .testi-role {
+    font-size: 10px;
+  }
+  
+  /* Fix SIM cards */
+  .sim-logo {
+    font-size: 12px;
+  }
+  
+  .sim-name {
+    font-size: 7px;
+  }
+}
+
+@media (max-width: 480px) {
+  /* Extra small devices */
+  .tech-node {
+    padding: 12px 12px;
+  }
+  
+  .tech-node-label {
+    font-size: 12px;
+  }
+  
+  .tech-node-sub {
+    font-size: 9px;
+  }
+  
+  .plan-features {
+    gap: 8px;
+  }
+  
+  .plan-feat {
+    gap: 6px;
+    font-size: 11px;
+  }
+  
+  .feature-tag {
+    font-size: 10px;
+  }
+}
