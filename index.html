@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <meta name="description" content="VERA — The world's most premium eSIM-first connectivity ecosystem. Beyond Connection.">
+  <title>VERA — Beyond Connection.</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- Custom Cursor Elements -->
+<div id="vera-cursor"></div>
+<div id="vera-cursor-ring"></div>
+
+<!-- Navbar -->
+<nav id="navbar">
+  <div class="container">
+    <div class="nav-inner">
+  <a href="#hero" class="nav-logo">
+  <img src="https://images4.imagebam.com/8f/50/7c/ME1CZ8LY_o.png" alt="VERA Logo" class="nav-logo-img">
+  <img src="https://images4.imagebam.com/9d/16/8b/ME1CZ9S9_o.png" alt="VERA" class="nav-text-logo">
+</a>
+      <ul class="nav-links">
+        <li><a href="#features" class="nav-link">Features</a></li>
+        <li><a href="#app" class="nav-link">App</a></li>
+        <li><a href="#coverage" class="nav-link">Coverage</a></li>
+        <li><a href="#pricing" class="nav-link">Plans</a></li>
+        <li><a href="#sims" class="nav-link">SIM</a></li>
+      </ul>
+      <a href="#pricing" class="btn btn-primary btn-sm nav-cta" style="padding:10px 22px;font-size:12px">Get Started</a>
+      <button class="hamburger" id="hamburger" aria-label="Menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+</nav>
+
+<!-- Mobile Menu -->
+<div class="mobile-menu" id="mobileMenu">
+  <a href="#features" class="nav-link" onclick="closeMobileMenu()">Features</a>
+  <a href="#app" class="nav-link" onclick="closeMobileMenu()">App</a>
+  <a href="#coverage" class="nav-link" onclick="closeMobileMenu()">Coverage</a>
+  <a href="#pricing" class="nav-link" onclick="closeMobileMenu()">Plans</a>
+  <a href="#sims" class="nav-link" onclick="closeMobileMenu()">SIM</a>
+  <a href="#pricing" class="btn btn-primary" onclick="closeMobileMenu()" style="margin-top:20px">Get Started</a>
+</div>
+
+<!-- Hero Section -->
+<section id="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-grid-overlay"></div>
+  <div class="hero-particles" id="heroParticles" aria-hidden="true"></div>
+  <div class="glow-orb orb-purple" style="position:absolute;top:-200px;left:-200px;pointer-events:none;" aria-hidden="true"></div>
+  <div class="glow-orb orb-purple" style="position:absolute;bottom:-200px;right:-100px;pointer-events:none;opacity:.5;" aria-hidden="true"></div>
+
+  <div class="hero-float-1" aria-hidden="true">
+    <div class="float-card">
+      <div class="float-card-label">Active Connection</div>
+      <div class="float-card-value">98.7%</div>
+      <div class="float-card-sub">↑ Global Uptime</div>
+      <div class="float-bar"><div class="float-bar-fill" style="width:98.7%"></div></div>
+    </div>
+  </div>
+  <div class="hero-float-2" aria-hidden="true">
+    <div class="float-card">
+      <div class="float-card-label">Data Speed</div>
+      <div class="float-card-value">5G</div>
+      <div class="float-card-sub">Premium Network</div>
+      <div class="float-bar"><div class="float-bar-fill" style="width:100%"></div></div>
+    </div>
+  </div>
+
+  <div class="hero-content">
+    <div class="hero-badge reveal">eSIM-First Network Ecosystem</div>
+    <div class="hero-v-container reveal" style="--delay:.1s">
+      <div class="hero-v-rings">
+        <div class="hero-ring ring-1"><div class="ring-dot"></div></div>
+        <div class="hero-ring ring-2"><div class="ring-dot"></div></div>
+        <div class="hero-ring ring-3"><div class="ring-dot"></div></div>
+      </div>
+      <div class="hero-v-glow"></div>
+      <img src="https://images4.imagebam.com/8f/50/7c/ME1CZ8LY_o.png" alt="VERA Logo" style="width: 120px; height: auto; position: relative; z-index: 1; filter: drop-shadow(0 0 30px rgba(139,43,255,0.6)); animation: letterFloat 4s ease-in-out infinite;">
+      <div class="hero-v-core-dot"></div>
+    </div>
+    <h1 class="display display-xl hero-title reveal" style="--delay:.2s">
+      <span class="gradient-text">Beyond</span><br/>
+      Connection.
+    </h1>
+    <p class="hero-sub reveal" style="--delay:.35s">
+      The world's most premium eSIM-first connectivity ecosystem. Beautifully engineered for those who demand more.
+    </p>
+    <div class="hero-btns reveal" style="--delay:.5s">
+      <a href="#pricing" class="btn btn-primary">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        Get Started
+      </a>
+      <a href="#pricing" class="btn btn-ghost">Explore Plans</a>
+    </div>
+  </div>
+  <div class="hero-scroll" aria-hidden="true">
+    <div class="scroll-line"></div>
+    <span class="label">Scroll</span>
+  </div>
+</section>
+
+<!-- Features Section -->
+<section id="features" class="section">
+  <div class="container">
+    <div class="features-header reveal">
+      <div class="label" style="justify-content:center;display:flex;margin-bottom:16px">What Sets Us Apart</div>
+      <h2 class="display display-lg"><span class="gradient-text">Premium</span> by Design</h2>
+      <p style="font-size:16px;color:var(--text-2);margin-top:16px;font-weight:300">Eight pillars of an extraordinary connected life.</p>
+    </div>
+    <div class="features-grid">
+      <div class="glass-card feat-card reveal"><div class="feat-icon-wrap"><svg class="feat-icon-svg" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg></div><div class="feat-title">Boundless Freedom</div><div class="feat-desc">Roam 160+ countries with a single eSIM. No roaming fees, no contracts — pure freedom of movement.</div></div>
+      <div class="glass-card feat-card reveal" style="--delay:.05s"><div class="feat-icon-wrap"><svg class="feat-icon-svg" viewBox="0 0 24 24"><path d="M1 6l11 6 11-6"/><path d="M1 12l11 6 11-6"/></svg></div><div class="feat-title">Premium Networks</div><div class="feat-desc">Exclusive partnerships with tier-1 operators. Always connected to the fastest available network in any region.</div></div>
+      <div class="glass-card feat-card reveal" style="--delay:.1s"><div class="feat-icon-wrap"><svg class="feat-icon-svg" viewBox="0 0 24 24"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg></div><div class="feat-title">Private by Design</div><div class="feat-desc">Zero-log architecture. Your data belongs to you. Military-grade encryption on every byte that travels our network.</div></div>
+      <div class="glass-card feat-card reveal" style="--delay:.15s"><div class="feat-icon-wrap"><svg class="feat-icon-svg" viewBox="0 0 24 24"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg></div><div class="feat-title">Powered by Technology</div><div class="feat-desc">AI-driven network optimisation. Predictive switching. Real-time load balancing across 500+ global carriers.</div></div>
+      <div class="glass-card feat-card reveal" style="--delay:.2s"><div class="feat-icon-wrap"><svg class="feat-icon-svg" viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg></div><div class="feat-title">Human First</div><div class="feat-desc">Designed with humanity at its core. Intuitive. Accessible. A connectivity experience as seamless as breathing.</div></div>
+      <div class="glass-card feat-card reveal" style="--delay:.25s"><div class="feat-icon-wrap"><svg class="feat-icon-svg" viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div><div class="feat-title">Encrypted & Secure</div><div class="feat-desc">End-to-end quantum-inspired encryption. AI fraud detection. Your identity, your communications, your safety.</div></div>
+      <div class="glass-card feat-card reveal" style="--delay:.3s"><div class="feat-icon-wrap"><svg class="feat-icon-svg" viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg></div><div class="feat-title">24/7 Global Support</div><div class="feat-desc">Elite concierge support in 40+ languages. AI-augmented. Human-backed. Available wherever you are, whenever you need.</div></div>
+      <div class="glass-card feat-card reveal" style="--delay:.35s"><div class="feat-icon-wrap"><svg class="feat-icon-svg" viewBox="0 0 24 24"><rect x="5" y="2" width="14" height="20" rx="2" ry="2"/><line x1="12" y1="18" x2="12.01" y2="18"/></svg></div><div class="feat-title">eSIM + Physical SIM</div><div class="feat-desc">Instant eSIM activation in 60 seconds. Or choose our premium physical SIM — same network, your preference.</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- App Section -->
+<section id="app" class="section" style="background:var(--deep)">
+  <div class="glow-orb orb-purple" style="position:absolute;right:-150px;top:50%;transform:translateY(-50%);opacity:.4;pointer-events:none;" aria-hidden="true"></div>
+  <div class="container" style="position:relative;z-index:1">
+    <div class="app-grid">
+      <div class="phone-wrap reveal-scale">
+        <div class="phone-outer-glow"></div>
+        <div class="phone">
+          <div class="phone-screen">
+            <div class="phone-notch"><div class="phone-notch-dot"></div></div>
+            <div class="phone-plan-header">
+              <div class="phone-plan-label">Current Plan</div>
+              <div class="phone-plan-name">VERA Elite</div>
+              <div class="phone-plan-badge">Premium Active</div>
+            </div>
+            <div class="phone-meter">
+              <div class="meter-container">
+                <svg class="meter-svg" viewBox="0 0 100 100">
+                  <defs><linearGradient id="meterGrad" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#8B2BFF"/><stop offset="100%" stop-color="#C084FC"/></linearGradient></defs>
+                  <circle class="meter-track" cx="50" cy="50" r="45" transform="rotate(-90 50 50)"/>
+                  <circle class="meter-glow" cx="50" cy="50" r="45" transform="rotate(-90 50 50)"/>
+                  <circle class="meter-fill" cx="50" cy="50" r="45" transform="rotate(-90 50 50)"/>
+                </svg>
+                <div class="meter-center"><div class="meter-value">75<span style="font-size:10px">GB</span></div><div class="meter-unit">of 100GB used</div></div>
+              </div>
+            </div>
+            <div class="phone-stats"><div class="phone-stat"><div class="phone-stat-val">5G</div><div class="phone-stat-label">Network</div></div><div class="phone-stat"><div class="phone-stat-val">160+</div><div class="phone-stat-label">Countries</div></div></div>
+            <div class="phone-actions"><div class="phone-action"><span class="phone-action-icon">➕</span>Add Data</div><div class="phone-action"><span class="phone-action-icon">📋</span>My Plan</div><div class="phone-action"><span class="phone-action-icon">📊</span>Usage</div><div class="phone-action"><span class="phone-action-icon">💬</span>Support</div></div>
+            <div class="phone-map"><div class="phone-map-node" style="top:40%;left:20%;animation-delay:.3s"></div><div class="phone-map-node" style="top:35%;left:45%;animation-delay:.8s"></div><div class="phone-map-node" style="top:50%;left:70%;animation-delay:1.2s"></div><div class="phone-map-node" style="top:60%;left:30%;animation-delay:.5s"></div><div class="phone-map-node" style="top:45%;left:80%;animation-delay:1.5s"></div></div>
+            <div class="phone-nav"><div class="phone-nav-item active"><span class="phone-nav-icon">🏠</span>Home</div><div class="phone-nav-item"><span class="phone-nav-icon">🌐</span>Plans</div><div class="phone-nav-item"><span class="phone-nav-icon">📍</span>Map</div><div class="phone-nav-item"><span class="phone-nav-icon">👤</span>Profile</div></div>
+          </div></div></div>
+      <div class="app-text reveal-right"><div class="label" style="margin-bottom:16px">The VERA App</div><h2 class="display display-lg app-title">Your world.<br/><em class="gradient-text">Connected</em><br/>beautifully.</h2><p class="app-desc">Every connection, every plan, every destination — managed with intuitive elegance. The VERA app is connectivity redefined.</p>
+        <div class="app-features"><div class="app-feat-row"><div class="app-feat-dot"></div><span class="app-feat-text">Real-time usage monitoring with AI insights</span></div><div class="app-feat-row"><div class="app-feat-dot"></div><span class="app-feat-text">Instant plan switching across 160+ countries</span></div><div class="app-feat-row"><div class="app-feat-dot"></div><span class="app-feat-text">Live global coverage map with signal strength</span></div><div class="app-feat-row"><div class="app-feat-dot"></div><span class="app-feat-text">One-tap data top-up, anywhere in the world</span></div></div>
+        <a href="#" class="btn btn-primary">Download the App</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Coverage Section -->
+<section id="coverage" class="section">
+  <div class="glow-orb orb-purple" style="position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);opacity:.15;pointer-events:none;" aria-hidden="true"></div>
+  <div class="container" style="position:relative;z-index:1">
+    <div class="coverage-header reveal"><div class="label" style="justify-content:center;display:flex;margin-bottom:16px">Global Reach</div><h2 class="display display-lg"><span class="gradient-text">Roam Without</span> Borders.</h2></div>
+    <div class="coverage-stats reveal" style="--delay:.15s"><div><div class="cov-stat-num gradient-text">160+</div><div class="cov-stat-label">Countries</div></div><div class="cov-divider"></div><div><div class="cov-stat-num gradient-text">500+</div><div class="cov-stat-label">Carrier Partners</div></div><div class="cov-divider"></div><div><div class="cov-stat-num gradient-text">99.9%</div><div class="cov-stat-label">Network Uptime</div></div><div class="cov-divider"></div><div><div class="cov-stat-num gradient-text">5G</div><div class="cov-stat-label">Across 60 Markets</div></div></div>
+    <div class="map-container reveal-scale" style="--delay:.2s"><svg class="world-map-svg" viewBox="0 0 960 500" fill="none"><rect width="960" height="500" fill="none"/><line x1="0" y1="250" x2="960" y2="250" stroke="rgba(139,43,255,0.1)" stroke-width="1"/><line x1="480" y1="0" x2="480" y2="500" stroke="rgba(139,43,255,0.1)" stroke-width="1"/><ellipse cx="480" cy="250" rx="460" ry="220" stroke="rgba(139,43,255,0.06)" stroke-width="1" fill="none"/><ellipse cx="480" cy="250" rx="320" ry="180" stroke="rgba(139,43,255,0.05)" stroke-width="1" fill="none"/><line x1="200" y1="180" x2="480" y2="240" class="conn-line"/><line x1="480" y1="240" x2="700" y2="200" class="conn-line" style="animation-delay:.5s"/><line x1="700" y1="200" x2="820" y2="280" class="conn-line" style="animation-delay:1s"/><line x1="480" y1="240" x2="550" y2="360" class="conn-line" style="animation-delay:.7s"/><line x1="200" y1="180" x2="160" y2="300" class="conn-line" style="animation-delay:.3s"/><line x1="160" y1="300" x2="550" y2="360" class="conn-line" style="animation-delay:1.2s"/>
+      <g class="map-pulse"><circle cx="200" cy="180" r="6" fill="rgba(139,43,255,0.4)"/><circle cx="200" cy="180" r="12" fill="rgba(139,43,255,0.15)"/><circle cx="200" cy="180" r="3" fill="#a78bfa"/><circle cx="480" cy="200" r="6" fill="rgba(139,43,255,0.4)"/><circle cx="480" cy="200" r="12" fill="rgba(139,43,255,0.15)"/><circle cx="480" cy="200" r="3" fill="#a78bfa"/><circle cx="700" cy="200" r="6" fill="rgba(139,43,255,0.4)"/><circle cx="700" cy="200" r="12" fill="rgba(139,43,255,0.15)"/><circle cx="700" cy="200" r="3" fill="#a78bfa"/><circle cx="560" cy="230" r="4" fill="rgba(168,85,247,0.5)"/><circle cx="560" cy="230" r="8" fill="rgba(168,85,247,0.15)"/><circle cx="490" cy="310" r="5" fill="rgba(139,43,255,0.35)"/><circle cx="490" cy="310" r="10" fill="rgba(139,43,255,0.12)"/><circle cx="270" cy="340" r="5" fill="rgba(139,43,255,0.35)"/><circle cx="270" cy="340" r="10" fill="rgba(139,43,255,0.12)"/><circle cx="760" cy="190" r="4" fill="rgba(196,132,252,0.5)"/><circle cx="780" cy="350" r="4" fill="rgba(168,85,247,0.4)"/><circle cx="630" cy="260" r="4" fill="rgba(168,85,247,0.4)"/><circle cx="710" cy="290" r="4" fill="rgba(139,43,255,0.4)"/><circle cx="420" cy="300" r="3" fill="rgba(139,43,255,0.3)"/></g>
+      <text x="480" y="165" fill="rgba(196,132,252,0.8)" font-size="9" text-anchor="middle" font-family="sans-serif" letter-spacing="2">VERA NETWORK</text>
+      <circle cx="480" cy="240" r="8" fill="rgba(139,43,255,0.5)"/><circle cx="480" cy="240" r="16" fill="rgba(139,43,255,0.2)"/><circle cx="480" cy="240" r="4" fill="#c084fc"/>
+    </svg></div>
+  </div>
+</section>
+
+<!-- SIM Products -->
+<section id="sims" class="section" style="background:var(--deep)">
+  <div class="container"><div class="sims-header reveal"><div class="label" style="justify-content:center;display:flex;margin-bottom:16px">SIM Products</div><h2 class="display display-lg">One SIM. <span class="gradient-text">Limitless</span><br/>Possibilities.</h2></div>
+    <div class="sims-grid"><div class="sim-card sim-transparent reveal"><div class="sim-reflection"></div><div class="sim-inner"><div class="sim-chip sim-chip-gold"></div><div><div class="sim-logo sim-logo-transparent">VERA</div><div class="sim-name sim-name-light">Transparent Edition</div></div></div><div class="sim-glow-dot"></div></div>
+      <div class="sim-card sim-black reveal" style="--delay:.1s"><div class="sim-inner"><div class="sim-chip sim-chip-dark" style="border:1px solid rgba(139,43,255,0.3)"></div><div><div class="sim-logo sim-logo-black">VERA</div><div class="sim-name sim-name-dark">Matte Black Edition</div></div></div><div class="sim-glow-dot"></div></div>
+      <div class="sim-card sim-silver reveal" style="--delay:.2s"><div class="sim-reflection" style="background:linear-gradient(180deg,rgba(255,255,255,0.4) 0%,transparent 100%)"></div><div class="sim-inner"><div class="sim-chip sim-chip-silver"></div><div><div class="sim-logo" style="color:rgba(10,10,20,0.75)">VERA</div><div class="sim-name sim-name-silver-dark">Liquid Silver Edition</div></div></div><div class="sim-glow-dot" style="background:radial-gradient(circle,#7c3aed 0%,#4c1d95 50%,transparent 100%)"></div></div>
+    </div><p class="sims-tagline reveal" style="--delay:.3s">"Engineered for perfectionists. Designed for the world."</p>
+  </div>
+</section>
+
+<!-- Tech Stack -->
+<section id="techstack" class="section">
+  <div class="glow-orb orb-purple" style="position:absolute;left:-150px;top:30%;opacity:.3;pointer-events:none;" aria-hidden="true"></div>
+  <div class="container" style="position:relative;z-index:1"><div class="tech-header reveal"><div class="label" style="justify-content:center;display:flex;margin-bottom:16px">Infrastructure</div><h2 class="display display-lg">The <span class="gradient-text">VERA</span> Stack</h2><p style="font-size:16px;color:var(--text-2);margin-top:16px;font-weight:300;max-width:500px;margin-left:auto;margin-right:auto;text-align:center">Six layers of precision-engineered connectivity infrastructure, working silently beneath every interaction.</p></div>
+    <div class="tech-flow"><div class="glass-card tech-node reveal"><div class="tech-node-icon">🌐</div><div><div class="tech-node-label">MNO Networks</div><div class="tech-node-sub">500+ global carrier partnerships</div></div></div><div class="tech-arrow"><div class="tech-flow-dot"></div></div>
+      <div class="glass-card tech-node reveal" style="--delay:.08s"><div class="tech-node-icon">⚡</div><div><div class="tech-node-label">MVNE Platform</div><div class="tech-node-sub">Enterprise-grade virtual network core</div></div></div><div class="tech-arrow"><div class="tech-flow-dot" style="animation-delay:.5s"></div></div>
+      <div class="glass-card tech-node vera-node reveal" style="--delay:.16s"><div class="tech-node-icon">🔷</div><div><div class="tech-node-label">VERA Core System</div><div class="tech-node-sub">AI-powered orchestration engine</div></div></div><div class="tech-arrow"><div class="tech-flow-dot" style="animation-delay:1s"></div></div>
+      <div class="glass-card tech-node reveal" style="--delay:.24s"><div class="tech-node-icon">💠</div><div><div class="tech-node-label">VERA SIM</div><div class="tech-node-sub">eSIM + Physical — premium connectivity layer</div></div></div><div class="tech-arrow"><div class="tech-flow-dot" style="animation-delay:1.5s"></div></div>
+      <div class="glass-card tech-node reveal" style="--delay:.32s"><div class="tech-node-icon">📱</div><div><div class="tech-node-label">VERA App</div><div class="tech-node-sub">Intelligent user experience layer</div></div></div><div class="tech-arrow"><div class="tech-flow-dot" style="animation-delay:2s"></div></div>
+      <div class="glass-card tech-node reveal" style="--delay:.4s;background:rgba(139,43,255,0.08);border-color:rgba(139,43,255,0.3)"><div class="tech-node-icon">✨</div><div><div class="tech-node-label" style="color:var(--silver-2)">You. Everywhere.</div><div class="tech-node-sub">Seamless global presence — always on, always premium</div></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- Security Section -->
+<section id="security" class="section" style="background:var(--deep)">
+  <div class="container"><div class="sec-grid"><div class="sec-visual reveal-scale"><div class="sec-shield-bg"></div><div class="sec-ring-outer"><div class="sec-node" style="top:0;left:50%;transform:translate(-50%,-50%)"></div><div class="sec-node" style="bottom:0;left:50%;transform:translate(-50%,50%)"></div><div class="sec-node" style="left:0;top:50%;transform:translate(-50%,-50%)"></div><div class="sec-node" style="right:0;top:50%;transform:translate(50%,-50%)"></div></div><div class="sec-ring-inner"><div class="sec-node" style="top:15%;right:0;transform:translate(50%,-50%)"></div><div class="sec-node" style="bottom:15%;left:0;transform:translate(-50%,50%)"></div></div>
+      <svg class="shield-svg" viewBox="0 0 200 220" fill="none"><defs><linearGradient id="shieldGrad" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#8B2BFF" stop-opacity="0.8"/><stop offset="100%" stop-color="#C084FC" stop-opacity="0.4"/></linearGradient></defs><path d="M100 10 L180 44 L180 110 C180 160 140 195 100 210 C60 195 20 160 20 110 L20 44 Z" fill="url(#shieldGrad)" stroke="rgba(168,85,247,0.6)" stroke-width="1.5"/><path d="M100 30 L165 58 L165 110 C165 152 130 183 100 196 C70 183 35 152 35 110 L35 58 Z" fill="rgba(139,43,255,0.15)" stroke="rgba(196,132,252,0.3)" stroke-width="1"/><path d="M70 108 L90 128 L135 82" stroke="rgba(196,132,252,0.9)" stroke-width="6" stroke-linecap="round" stroke-linejoin="round" fill="none"/><text x="100" y="160" fill="rgba(196,132,252,0.4)" font-size="24" text-anchor="middle" font-family="sans-serif" font-weight="700" letter-spacing="4">VERA</text></svg></div>
+    <div class="sec-text reveal-right"><div class="label" style="margin-bottom:16px">Security</div><h2 class="display display-md" style="margin-bottom:20px">Protected at<br/><span class="gradient-text">Every Layer</span></h2><p style="font-size:15px;color:var(--text-2);line-height:1.8;font-weight:300;margin-bottom:32px">VERA operates on a zero-trust architecture with quantum-inspired encryption. Your identity, data, and communications are defended by the most advanced security stack in consumer telecommunications.</p>
+      <div class="sec-features"><div class="sec-feat"><div class="sec-feat-icon">🔐</div><div><div class="sec-feat-title">Encrypted Communication</div><div class="sec-feat-desc">End-to-end AES-256 encryption across all data channels. No plaintext ever leaves the device.</div></div></div><div class="sec-feat"><div class="sec-feat-icon">🤖</div><div><div class="sec-feat-title">AI-Powered Fraud Detection</div><div class="sec-feat-desc">Real-time anomaly detection across 10M+ signals. Threats neutralised before you notice them.</div></div></div><div class="sec-feat"><div class="sec-feat-icon">🛡️</div><div><div class="sec-feat-title">Zero-Trust Architecture</div><div class="sec-feat-desc">No implicit trust granted at any layer. Every request verified, authenticated, authorised independently.</div></div></div><div class="sec-feat"><div class="sec-feat-icon">⚛️</div><div><div class="sec-feat-title">Quantum-Inspired Security</div><div class="sec-feat-desc">Post-quantum cryptography protocols, future-proofing your privacy against next-generation threats.</div></div></div></div></div>
+  </div></div>
+</section>
+
+<!-- Pricing Section -->
+<section id="pricing" class="section">
+  <div class="container"><div class="pricing-header reveal"><div class="label" style="justify-content:center;display:flex;margin-bottom:16px">Plans</div><h2 class="display display-lg">Choose <span class="gradient-text">Your</span> World</h2><p style="font-size:16px;color:var(--text-2);margin-top:16px;font-weight:300">Every plan includes eSIM activation, global coverage, and premium support.</p></div>
+    <div class="pricing-grid"><div class="glass-card plan-card reveal"><div class="plan-tier">Starter</div><div class="plan-name">Starter</div><div class="plan-price"><span class="plan-currency">$</span><span class="plan-amount">9</span></div><div class="plan-period">per month · no contract</div><div class="plan-features"><div class="plan-feat"><div class="plan-check"><svg viewBox="0 0 12 10"><polyline points="1,5 4,8 11,1"/></svg></div><span>10GB High-Speed Data</span></div><div class="plan-feat"><div class="plan-check"><svg viewBox="0 0 12 10"><polyline points="1,5 4,8 11,1"/></svg></div><span>eSIM Instant Activation</span></div><div class="plan-feat"><div class="plan-check"><svg viewBox="0 0 12 10"><polyline points="1,5 4,8 11,1"/></svg></div><span>40 Countries Coverage</span></div><div class="plan-feat"><div class="plan-check"><svg viewBox="0 0 12 10"><polyline points="1,5 4,8 11,1"/></svg></div><span>Standard Support</span></div><div class="plan-feat"><div class="plan-check"><svg viewBox="0 0 12 10"><polyline points="1,5 4,8 11,1"/></svg></div><span>VERA App Access</span></div></div><a href="#" class="btn btn-ghost plan-btn">Get Starter</a></div>
+      <div class="glass-card plan-card reveal" style="--delay:.1s"><div class="plan-tier">Global</div><div class="plan-name">Global</div><div class="plan-price"><span class="plan-currency">$</span><span class="plan-amount">29</span></div><div class="plan-period">per month · no contract</div><div class="plan-features"><div class="plan-feat"><div class="plan-check"><svg viewBox="0 0 12 10"><polyline points="1,5 4,8 11,1"/></svg></div><span>100GB High-Speed Data</span></div><div class="plan-feat"><div class="plan-check"><svg viewBox="0 0 12 10"><polyline points="1,5 4,8 11,1"/></svg></div><span>eSIM + Physical SIM</span></div><div class="plan-feat"><div class="plan-check"><svg viewBox="0 0 12 10"><polyline points="1,5 4,8 11,1"/></svg></div><span>100 Countries Coverage</span></div><div class="plan-feat"><div class="plan-check"><svg viewBox="0 0 12 10"><polyline points="1,5 4,8 11,1"/></svg></div><span>Priority Support 24/7</span></div><div class="plan-feat"><div class="plan-check"><svg viewBox="0 0 12 10"><polyline points="1,5 4,8 11,1"/></svg></div><span>Advanced Security Suite</span></div><div class="plan-feat"><div class="plan-check"><svg viewBox="0 0 12 10"><polyline points="1,5 4,8 11,1"/></svg></div><span>International Roaming</span></div></div><a href="#" class="btn btn-primary plan-btn">Get Global</a></div>
+      <div class="plan-card plan-elite reveal" style="--delay:.2s"><div class="plan-badge">Best Plan</div><div class="plan-tier">Elite</div><div class="plan-name">Elite</div><div class="plan-price"><span class="plan-currency">$</span><span class="plan-amount">79</span></div><div class="plan-period">per month · VIP membership</div><div class="plan-features"><div class="plan-feat"><div class="plan-check" style="background:rgba(139,43,255,0.2);border-color:rgba(139,43,255,0.5)"><svg viewBox="0 0 12 10"><polyline points="1,5 4,8 11,1"/></svg></div><span style="color:var(--text)">Global High-Speed Data</span></div><div class="plan-feat"><div class="plan-check" style="background:rgba(139,43,255,0.2);border-color:rgba(139,43,255,0.5)"><svg viewBox="0 0 12 10"><polyline points="1,5 4,8 11,1"/></svg></div><span style="color:var(--text)">160+ Countries Coverage</span></div><div class="plan-feat"><div class="plan-check" style="background:rgba(139,43,255,0.2);border-color:rgba(139,43,255,0.5)"><svg viewBox="0 0 12 10"><polyline points="1,5 4,8 11,1"/></svg></div><span style="color:var(--text)">5G Priority Access</span></div><div class="plan-feat"><div class="plan-check" style="background:rgba(139,43,255,0.2);border-color:rgba(139,43,255,0.5)"><svg viewBox="0 0 12 10"><polyline points="1,5 4,8 11,1"/></svg></div><span style="color:var(--text)">Elite Concierge Support</span></div><div class="plan-feat"><div class="plan-check" style="background:rgba(139,43,255,0.2);border-color:rgba(139,43,255,0.5)"><svg viewBox="0 0 12 10"><polyline points="1,5 4,8 11,1"/></svg></div><span style="color:var(--text)">Quantum Security Suite</span></div><div class="plan-feat"><div class="plan-check" style="background:rgba(139,43,255,0.2);border-color:rgba(139,43,255,0.5)"><svg viewBox="0 0 12 10"><polyline points="1,5 4,8 11,1"/></svg></div><span style="color:var(--text)">Free Liquid Silver SIM</span></div><div class="plan-feat"><div class="plan-check" style="background:rgba(139,43,255,0.2);border-color:rgba(139,43,255,0.5)"><svg viewBox="0 0 12 10"><polyline points="1,5 4,8 11,1"/></svg></div><span style="color:var(--text)">Multi-device eSIM Profiles</span></div></div><a href="#" class="btn btn-primary plan-btn" style="box-shadow:0 0 40px rgba(139,43,255,0.5)">Get Elite</a></div>
+    </div>
+  </div>
+</section>
+
+<!-- Testimonials -->
+<section id="testimonials" class="section" style="background:var(--deep)">
+  <div class="container"><div class="testi-header reveal"><div class="label" style="justify-content:center;display:flex;margin-bottom:16px">Reviews</div><h2 class="display display-lg">Voices of <span class="gradient-text">VERA</span></h2></div>
+    <div class="testi-grid"><div class="glass-card testi-card reveal"><div class="testi-stars">★★★★★</div><p class="testi-quote">"VERA is the first network that made me forget I was roaming. Seamless across 14 countries in one month. It simply works — beautifully."</p><div class="testi-author"><div class="testi-avatar">SL</div><div><div class="testi-name">Sophie Laurent</div><div class="testi-role">Creative Director · Paris & New York</div></div></div></div>
+      <div class="glass-card testi-card reveal" style="--delay:.1s"><div class="testi-stars">★★★★★</div><p class="testi-quote">"Switched from a legacy carrier to VERA Elite. The speed difference is insane. And the app? It looks like something from 2030."</p><div class="testi-author"><div class="testi-avatar">MK</div><div><div class="testi-name">Marcus Kim</div><div class="testi-role">Product Lead · Tokyo</div></div></div></div>
+      <div class="glass-card testi-card reveal" style="--delay:.2s"><div class="testi-stars">★★★★★</div><p class="testi-quote">"The security features alone justify the premium. I handle sensitive communications globally. VERA is the only network I trust with that responsibility."</p><div class="testi-author"><div class="testi-avatar">AR</div><div><div class="testi-name">Aisha Reeves</div><div class="testi-role">Cybersecurity Consultant · London</div></div></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer>
+  <div class="container"><div class="footer-grid"><div><div class="nav-logo" style="margin-bottom:0"><div style="display: flex; align-items: center; gap: 12px; margin-bottom: 16px;">
+  <img src="https://images4.imagebam.com/8f/50/7c/ME1CZ8LY_o.png" alt="VERA Logo" style="height: 40px; width: auto;">
+  <img src="https://images4.imagebam.com/9d/16/8b/ME1CZ9S9_o.png" alt="VERA" style="height: 28px; width: auto;">
+</div></div><p class="footer-brand-desc">Beyond Connection. The world's most premium eSIM-first connectivity ecosystem — beautifully engineered for those who demand more.</p><div class="footer-socials"><a href="#" class="social-btn" aria-label="Twitter/X"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4l16 16M4 20L20 4"/></svg></a><a href="#" class="social-btn" aria-label="Instagram"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg></a><a href="#" class="social-btn" aria-label="LinkedIn"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg></a><a href="#" class="social-btn" aria-label="YouTube"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 12a29 29 0 0 0 .46 5.58A2.78 2.78 0 0 0 3.4 19.6C5.12 20 12 20 12 20s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-1.95A29 29 0 0 0 23 12a29 29 0 0 0-.46-5.58z"/><polygon points="9.75,15.02 15.5,12 9.75,8.98"/></svg></a></div></div>
+      <div><div class="footer-col-title">Product</div><div class="footer-links"><a href="#">eSIM Plans</a><a href="#">Physical SIM</a><a href="#">VERA App</a><a href="#">Global Coverage</a></div></div>
+      <div><div class="footer-col-title">Company</div><div class="footer-links"><a href="#">About VERA</a><a href="#">Technology</a><a href="#">Security</a><a href="#">Careers</a></div></div>
+      <div><div class="footer-col-title">Support</div><div class="footer-links"><a href="#">Help Centre</a><a href="#">Privacy Policy</a><a href="#">Terms of Service</a><a href="#">Contact Us</a></div></div>
+    </div>
+    <div class="footer-bottom"><p class="footer-copy">© 2025 VERA Technologies Ltd. All rights reserved.</p><div class="footer-bottom-links"><a href="#">Privacy</a><a href="#">Terms</a><a href="#">Cookies</a></div></div>
+  </div>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>
