@@ -172,7 +172,7 @@ async function handleRegister(event) {
     }
 }
 
-// Load dashboard after login - FIXED
+// Load dashboard after login - COMPLETE VERSION
 async function loadDashboard() {
     if (!window.VERA_API.isLoggedIn()) {
         // Make sure login button is visible when not logged in
@@ -193,6 +193,41 @@ async function loadDashboard() {
             
             if (dashboard) {
                 dashboard.style.display = 'block';
+                
+                // Get subscription info (if any)
+                let subscriptionHtml = '';
+                try {
+                    const subResponse = await fetch(`${API_URL}/subscriptions/current`, {
+                        headers: { 'Authorization': `Bearer ${authToken}` }
+                    });
+                    const subData = await subResponse.json();
+                    if (subData.subscription) {
+                        subscriptionHtml = `
+                            <div class="glass-card" style="padding: 20px;">
+                                <h4>💎 Current Plan</h4>
+                                <p style="margin-top: 10px; font-size: 24px; font-weight: bold;">${subData.subscription.plan?.name || 'No plan'}</p>
+                                <p style="color: var(--text-2);">Renews: ${new Date(subData.subscription.current_period_end).toLocaleDateString()}</p>
+                            </div>
+                        `;
+                    } else {
+                        subscriptionHtml = `
+                            <div class="glass-card" style="padding: 20px;">
+                                <h4>💎 No Active Plan</h4>
+                                <p style="margin-top: 10px;">Choose a plan below</p>
+                                <a href="#pricing" class="btn btn-primary" style="margin-top: 10px;">View Plans</a>
+                            </div>
+                        `;
+                    }
+                } catch (e) {
+                    subscriptionHtml = `
+                        <div class="glass-card" style="padding: 20px;">
+                            <h4>💎 Current Plan</h4>
+                            <p style="margin-top: 10px;">No active subscription</p>
+                            <a href="#pricing" class="btn btn-primary" style="margin-top: 10px;">View Plans</a>
+                        </div>
+                    `;
+                }
+                
                 document.getElementById('dashboardContent').innerHTML = `
                     <div style="text-align: center;">
                         <div class="hero-v-container" style="margin: 0 auto 30px; width: 100px;">
@@ -200,7 +235,31 @@ async function loadDashboard() {
                         </div>
                         <h3 class="display-sm">Welcome back, ${user.full_name || 'User'}!</h3>
                         <p style="color: var(--text-2); margin-top: 10px;">${user.email}</p>
-                        <button onclick="window.VERA_API.logout()" class="btn btn-ghost" style="margin-top: 20px;">Logout</button>
+                        <hr style="margin: 30px 0; border-color: rgba(255,255,255,0.1);">
+                        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; margin-top: 30px;">
+                            ${subscriptionHtml}
+                            <div class="glass-card" style="padding: 20px;">
+                                <h4>📅 Member Since</h4>
+                                <p style="margin-top: 10px; font-size: 18px;">${user.created_at ? new Date(user.created_at).toLocaleDateString() : 'Recently'}</p>
+                            </div>
+                            <div class="glass-card" style="padding: 20px;">
+                                <h4>🌍 Location</h4>
+                                <p style="margin-top: 10px;">${user.country || 'Not set'}</p>
+                            </div>
+                            <div class="glass-card" style="padding: 20px;">
+                                <h4>📞 Phone</h4>
+                                <p style="margin-top: 10px;">${user.phone_number || 'Not set'}</p>
+                            </div>
+                            <div class="glass-card" style="padding: 20px;">
+                                <h4>📱 Account Status</h4>
+                                <p style="color: #4ade80; margin-top: 10px;">Active</p>
+                            </div>
+                            <div class="glass-card" style="padding: 20px;">
+                                <h4>🔑 Account ID</h4>
+                                <p style="margin-top: 10px; font-size: 12px; word-break: break-all;">${user.id.substring(0, 8)}...</p>
+                            </div>
+                        </div>
+                        <button onclick="window.VERA_API.logout()" class="btn btn-ghost" style="margin-top: 30px;">Logout</button>
                     </div>
                 `;
             }
@@ -208,8 +267,7 @@ async function loadDashboard() {
     } catch (error) {
         console.error('Error loading dashboard:', error);
     }
-}
-// Check if user is already logged in on page load
+}// Check if user is already logged in on page load
 document.addEventListener('DOMContentLoaded', async () => {
     if (window.VERA_API.isLoggedIn()) {
         await loadDashboard();
