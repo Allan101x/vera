@@ -227,41 +227,103 @@ async function loadDashboard() {
                         </div>
                     `;
                 }
-                
                 document.getElementById('dashboardContent').innerHTML = `
-                    <div style="text-align: center;">
-                        <div class="hero-v-container" style="margin: 0 auto 30px; width: 100px;">
-                            <img src="https://images4.imagebam.com/8f/50/7c/ME1CZ8LY_o.png" alt="VERA" style="width: 80px;">
-                        </div>
-                        <h3 class="display-sm">Welcome back, ${user.full_name || 'User'}!</h3>
-                        <p style="color: var(--text-2); margin-top: 10px;">${user.email}</p>
-                        <hr style="margin: 30px 0; border-color: rgba(255,255,255,0.1);">
-                        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; margin-top: 30px;">
-                            ${subscriptionHtml}
-                            <div class="glass-card" style="padding: 20px;">
-                                <h4>📅 Member Since</h4>
-                                <p style="margin-top: 10px; font-size: 18px;">${user.created_at ? new Date(user.created_at).toLocaleDateString() : 'Recently'}</p>
-                            </div>
-                            <div class="glass-card" style="padding: 20px;">
-                                <h4>🌍 Location</h4>
-                                <p style="margin-top: 10px;">${user.country || 'Not set'}</p>
-                            </div>
-                            <div class="glass-card" style="padding: 20px;">
-                                <h4>📞 Phone</h4>
-                                <p style="margin-top: 10px;">${user.phone_number || 'Not set'}</p>
-                            </div>
-                            <div class="glass-card" style="padding: 20px;">
-                                <h4>📱 Account Status</h4>
-                                <p style="color: #4ade80; margin-top: 10px;">Active</p>
-                            </div>
-                            <div class="glass-card" style="padding: 20px;">
-                                <h4>🔑 Account ID</h4>
-                                <p style="margin-top: 10px; font-size: 12px; word-break: break-all;">${user.id.substring(0, 8)}...</p>
-                            </div>
-                        </div>
-                        <button onclick="window.VERA_API.logout()" class="btn btn-ghost" style="margin-top: 30px;">Logout</button>
+    <div style="text-align: center;">
+        <!-- Animated Logo -->
+        <div class="hero-v-container" style="margin: 0 auto 30px; width: 100px;">
+            <div class="hero-v-rings" style="transform: scale(0.6);">
+                <div class="hero-ring ring-1"><div class="ring-dot"></div></div>
+                <div class="hero-ring ring-2"><div class="ring-dot"></div></div>
+                <div class="hero-ring ring-3"><div class="ring-dot"></div></div>
+            </div>
+            <div class="hero-v-glow"></div>
+            <img src="https://images4.imagebam.com/8f/50/7c/ME1CZ8LY_o.png" alt="VERA" style="width: 60px; position: relative; z-index: 1;">
+        </div>
+        
+        <!-- Welcome Message -->
+        <h3 class="display-md" style="background: linear-gradient(135deg, var(--silver-2), var(--purple-3)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">
+            Welcome back, ${user.full_name || 'User'}!
+        </h3>
+        <p style="color: var(--purple-3); margin-top: 10px; font-size: 14px;">${user.email}</p>
+        
+        <hr style="margin: 40px 0; border-color: rgba(255,255,255,0.08);">
+        
+        <!-- Stats Grid -->
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; margin-bottom: 30px;">
+            ${subscriptionHtml}
+            
+            <div class="glass-card" style="padding: 24px; text-align: left; transition: all 0.3s ease;">
+                <div style="display: flex; align-items: center; gap: 15px; margin-bottom: 15px;">
+                    <div style="width: 48px; height: 48px; border-radius: 14px; background: rgba(139,43,255,0.12); border: 1px solid rgba(139,43,255,0.2); display: flex; align-items: center; justify-content: center; font-size: 24px;">
+                        📅
                     </div>
-                `;
+                    <div>
+                        <h4 style="color: var(--text-2); font-size: 12px; letter-spacing: 0.1em;">MEMBER SINCE</h4>
+                        <p style="font-size: 18px; font-weight: 600; color: var(--silver-2);">${user.created_at ? new Date(user.created_at).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' }) : 'Recently'}</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="glass-card" style="padding: 24px; text-align: left; transition: all 0.3s ease;">
+                <div style="display: flex; align-items: center; gap: 15px; margin-bottom: 15px;">
+                    <div style="width: 48px; height: 48px; border-radius: 14px; background: rgba(139,43,255,0.12); border: 1px solid rgba(139,43,255,0.2); display: flex; align-items: center; justify-content: center; font-size: 24px;">
+                        📍
+                    </div>
+                    <div>
+                        <h4 style="color: var(--text-2); font-size: 12px; letter-spacing: 0.1em;">LOCATION</h4>
+                        <p style="font-size: 18px; font-weight: 600; color: var(--silver-2);">${user.country || 'Not set'}</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="glass-card" style="padding: 24px; text-align: left; transition: all 0.3s ease;">
+                <div style="display: flex; align-items: center; gap: 15px; margin-bottom: 15px;">
+                    <div style="width: 48px; height: 48px; border-radius: 14px; background: rgba(139,43,255,0.12); border: 1px solid rgba(139,43,255,0.2); display: flex; align-items: center; justify-content: center; font-size: 24px;">
+                        📞
+                    </div>
+                    <div>
+                        <h4 style="color: var(--text-2); font-size: 12px; letter-spacing: 0.1em;">PHONE</h4>
+                        <p style="font-size: 18px; font-weight: 600; color: var(--silver-2);">${user.phone_number || 'Not set'}</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="glass-card" style="padding: 24px; text-align: left; transition: all 0.3s ease;">
+                <div style="display: flex; align-items: center; gap: 15px; margin-bottom: 15px;">
+                    <div style="width: 48px; height: 48px; border-radius: 14px; background: rgba(34,197,94,0.12); border: 1px solid rgba(34,197,94,0.2); display: flex; align-items: center; justify-content: center; font-size: 24px;">
+                        🟢
+                    </div>
+                    <div>
+                        <h4 style="color: var(--text-2); font-size: 12px; letter-spacing: 0.1em;">STATUS</h4>
+                        <p style="font-size: 18px; font-weight: 600; color: #22c55e;">Active</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="glass-card" style="padding: 24px; text-align: left; transition: all 0.3s ease;">
+                <div style="display: flex; align-items: center; gap: 15px; margin-bottom: 15px;">
+                    <div style="width: 48px; height: 48px; border-radius: 14px; background: rgba(139,43,255,0.12); border: 1px solid rgba(139,43,255,0.2); display: flex; align-items: center; justify-content: center; font-size: 24px;">
+                        🔑
+                    </div>
+                    <div>
+                        <h4 style="color: var(--text-2); font-size: 12px; letter-spacing: 0.1em;">ACCOUNT ID</h4>
+                        <p style="font-size: 14px; font-weight: 500; color: var(--silver-2); font-family: monospace;">${user.id.substring(0, 12)}...</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Logout Button -->
+        <button onclick="window.VERA_API.logout()" class="btn btn-ghost" style="margin-top: 20px; padding: 12px 32px;">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/>
+                <polyline points="16 17 21 12 16 7"/>
+                <line x1="21" y1="12" x2="9" y2="12"/>
+            </svg>
+            Logout
+        </button>
+    </div>
+`;
             }
         }
     } catch (error) {
