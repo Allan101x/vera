@@ -37,13 +37,16 @@ async function apiCall(endpoint, options = {}) {
     }
 }
 
-// REGISTER FUNCTION
-async function registerUser(email, fullName, phoneNumber, country) {
+// REGISTER FUNCTION - WITH PASSWORD
+async function registerUser(email, fullName, phoneNumber, country, password) {
     try {
+        console.log('Registering with password:', password ? 'Yes' : 'No');
+        
         const data = await apiCall('/auth/register', {
             method: 'POST',
             body: JSON.stringify({ 
                 email, 
+                password,
                 full_name: fullName, 
                 phone_number: phoneNumber, 
                 country 
@@ -57,10 +60,10 @@ async function registerUser(email, fullName, phoneNumber, country) {
         }
         return { success: false, error: 'Registration failed' };
     } catch (error) {
+        console.error('Registration error:', error);
         return { success: false, error: error.message };
     }
 }
-
 // LOGIN FUNCTION - WITH PASSWORD
 async function loginUser(email, password) {
     try {
