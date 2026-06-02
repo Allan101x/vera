@@ -1,4 +1,232 @@
 // ================================================
+// VERA BACKEND CONNECTION
+// ================================================
+
+const API_URL = 'http://localhost:5000/api';
+
+// Get stored token
+let authToken = localStorage.getItem('vera_token');
+
+// Helper function for API calls
+async function apiCall(endpoint, options = {}) {
+    const headers = {
+        'Content-Type': 'application/json',
+        ...options.headers,
+    };
+    
+    if (authToken) {
+        headers['Authorization'] = `Bearer ${authToken}`;
+    }
+    
+    try {
+        const response = await fetch(`${API_URL}${endpoint}`, {
+            ...options,
+            headers,
+        });
+        
+        const data = await response.json();
+        
+        if (!response.ok) {
+            throw new Error(data.error || 'API request failed');
+        }
+        
+        return data;
+    } catch (error) {
+        console.error('API Error:', error);
+        throw error;
+    }
+}
+
+// REGISTER FUNCTION
+async function registerUser(email, fullName, phoneNumber, country) {
+    try {
+        const data = await apiCall('/auth/register', {
+            method: 'POST',
+            body: JSON.stringify({ 
+                email, 
+                full_name: fullName, 
+                phone_number: phoneNumber, 
+                country 
+            }),
+        });
+        
+        if (data.token) {
+            authToken = data.token;
+            localStorage.setItem('vera_token', data.token);
+            return { success: true, user: data.user };
+        }
+        return { success: false, error: 'Registration failed' };
+    } catch (error) {
+        return { success: false, error: error.message };
+    }
+}
+
+// LOGIN FUNCTION
+async function loginUser(email) {
+    try {
+        const data = await apiCall('/auth/login', {
+            method: 'POST',
+            body: JSON.stringify({ email }),
+        });
+        
+        if (data.token) {
+            authToken = data.token;
+            localStorage.setItem('vera_token', data.token);
+            return { success: true, user: data.user };
+        }
+        return { success: false, error: 'Login failed' };
+    } catch (error) {
+        return { success: false, error: error.message };
+    }
+}
+
+// LOGOUT FUNCTION
+function logoutUser() {
+    authToken = null;
+    localStorage.removeItem('vera_token');
+    location.reload();
+}
+
+// GET USER PROFILE
+async function getUserProfile() {
+    try {
+        const data = await apiCall('/user/profile');
+        return data.user;
+    } catch (error) {
+        return null;
+    }
+}
+
+// CHECK IF USER IS LOGGED IN
+function isLoggedIn() {
+    return authToken !== null;
+}
+
+// Make functions available globally
+window.VERA_API = {
+    register: registerUser,
+    login: loginUser,
+    logout: logoutUser,
+    getProfile: getUserProfile,
+    isLoggedIn: isLoggedIn,
+};
+
+// ================================================
+// UI FUNCTIONS - Add these to your website
+// ================================================
+
+// Show login modal
+function showLoginModal() {
+    const modal = document.getElementById('loginModal');
+    if (modal) modal.style.display = 'flex';
+}
+
+// Close login modal
+function closeLoginModal() {
+    const modal = document.getElementById('loginModal');
+    if (modal) modal.style.display = 'none';
+}
+
+// Show register modal
+function showRegisterModal() {
+    const modal = document.getElementById('registerModal');
+    if (modal) modal.style.display = 'flex';
+}
+
+// Close register modal
+function closeRegisterModal() {
+    const modal = document.getElementById('registerModal');
+    if (modal) modal.style.display = 'none';
+}
+
+// Handle login form submission
+async function handleLogin(event) {
+    event.preventDefault();
+    const email = document.getElementById('loginEmail').value;
+    
+    const result = await window.VERA_API.login(email);
+    if (result.success) {
+        closeLoginModal();
+        await loadDashboard();
+    } else {
+        alert('Login failed: ' + result.error);
+    }
+}
+
+// Handle register form submission
+async function handleRegister(event) {
+    event.preventDefault();
+    const fullName = document.getElementById('regFullName').value;
+    const email = document.getElementById('regEmail').value;
+    const phone = document.getElementById('regPhone').value;
+    const country = document.getElementById('regCountry').value;
+    
+    const result = await window.VERA_API.register(email, fullName, phone, country);
+    if (result.success) {
+        closeRegisterModal();
+        await loadDashboard();
+    } else {
+        alert('Registration failed: ' + result.error);
+    }
+}
+
+// Load dashboard after login
+async function loadDashboard() {
+    if (!window.VERA_API.isLoggedIn()) {
+        showLoginModal();
+        return;
+    }
+    
+    const user = await window.VERA_API.getProfile();
+    
+    if (user) {
+        // Hide hero section, show dashboard
+        const hero = document.getElementById('hero');
+        const dashboard = document.getElementById('dashboardSection');
+        
+        if (hero) hero.style.display = 'none';
+        if (dashboard) {
+            dashboard.style.display = 'block';
+            document.getElementById('dashboardContent').innerHTML = `
+                <div style="text-align: center;">
+                    <div class="hero-v-container" style="margin: 0 auto 30px; width: 100px;">
+                        <img src="https://images4.imagebam.com/8f/50/7c/ME1CZ8LY_o.png" alt="VERA" style="width: 80px;">
+                    </div>
+                    <h3 class="display-sm">Welcome back, ${user.full_name}!</h3>
+                    <p style="color: var(--text-2); margin-top: 10px;">${user.email}</p>
+                    <hr style="margin: 30px 0; border-color: rgba(255,255,255,0.1);">
+                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px; margin-top: 30px;">
+                        <div class="glass-card" style="padding: 20px;">
+                            <h4>📱 Account Status</h4>
+                            <p style="color: #4ade80; margin-top: 10px;">Active</p>
+                        </div>
+                        <div class="glass-card" style="padding: 20px;">
+                            <h4>📅 Member Since</h4>
+                            <p style="margin-top: 10px;">${new Date(user.created_at).toLocaleDateString()}</p>
+                        </div>
+                        <div class="glass-card" style="padding: 20px;">
+                            <h4>🌍 Location</h4>
+                            <p style="margin-top: 10px;">${user.country || 'Not set'}</p>
+                        </div>
+                        <div class="glass-card" style="padding: 20px;">
+                            <h4>📞 Phone</h4>
+                            <p style="margin-top: 10px;">${user.phone_number || 'Not set'}</p>
+                        </div>
+                    </div>
+                </div>
+            `;
+        }
+    }
+}
+
+// Check if user is already logged in on page load
+document.addEventListener('DOMContentLoaded', async () => {
+    if (window.VERA_API.isLoggedIn()) {
+        await loadDashboard();
+    }
+});
+
+// ================================================
 // VERA — Main JavaScript
 // Custom cursor, navbar, particles, scroll reveal, smooth scroll, active nav
 // ================================================
