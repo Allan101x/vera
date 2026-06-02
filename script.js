@@ -175,6 +175,9 @@ async function handleRegister(event) {
 // Load dashboard after login - FIXED
 async function loadDashboard() {
     if (!window.VERA_API.isLoggedIn()) {
+        // Make sure login button is visible when not logged in
+        const loginBtn = document.getElementById('loginNavBtn');
+        if (loginBtn) loginBtn.style.display = 'block';
         return;
     }
     
@@ -182,6 +185,10 @@ async function loadDashboard() {
         const user = await window.VERA_API.getProfile();
         
         if (user) {
+            // Hide login button when logged in
+            const loginBtn = document.getElementById('loginNavBtn');
+            if (loginBtn) loginBtn.style.display = 'none';
+            
             const dashboard = document.getElementById('dashboardSection');
             
             if (dashboard) {
