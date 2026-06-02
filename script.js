@@ -61,13 +61,12 @@ async function registerUser(email, fullName, phoneNumber, country) {
     }
 }
 
-// LOGIN FUNCTION - FIXED
-async function loginUser(email) {
+// LOGIN FUNCTION - WITH PASSWORD
+async function loginUser(email, password) {
     try {
-        // For now, just check if user exists (no password validation for testing)
         const data = await apiCall('/auth/login', {
             method: 'POST',
-            body: JSON.stringify({ email }),
+            body: JSON.stringify({ email, password }),
         });
         
         if (data.token) {
@@ -139,18 +138,24 @@ function closeRegisterModal() {
     if (modal) modal.style.display = 'none';
 }
 
-// Handle login form submission - FIXED
+// Handle login form submission - WITH PASSWORD
 async function handleLogin(event) {
     event.preventDefault();
     const email = document.getElementById('loginEmail').value;
+    const password = document.getElementById('loginPassword').value;
     
-    const result = await window.VERA_API.login(email);
+    if (!password) {
+        showToast('Please enter your password', 'error');
+        return;
+    }
+    
+    const result = await window.VERA_API.login(email, password);
     if (result.success) {
         closeLoginModal();
-        // Force reload to show dashboard
+        showToast(`Welcome back, ${result.user.full_name}!`, 'success');
         window.location.reload();
     } else {
-        alert('Login failed: ' + result.error);
+        showToast('Login failed: ' + result.error, 'error');
     }
 }
 
