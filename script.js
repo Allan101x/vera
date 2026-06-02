@@ -61,9 +61,10 @@ async function registerUser(email, fullName, phoneNumber, country) {
     }
 }
 
-// LOGIN FUNCTION
+// LOGIN FUNCTION - FIXED
 async function loginUser(email) {
     try {
+        // For now, just check if user exists (no password validation for testing)
         const data = await apiCall('/auth/login', {
             method: 'POST',
             body: JSON.stringify({ email }),
@@ -79,7 +80,6 @@ async function loginUser(email) {
         return { success: false, error: error.message };
     }
 }
-
 // LOGOUT FUNCTION
 function logoutUser() {
     authToken = null;
@@ -139,7 +139,7 @@ function closeRegisterModal() {
     if (modal) modal.style.display = 'none';
 }
 
-// Handle login form submission
+// Handle login form submission - FIXED
 async function handleLogin(event) {
     event.preventDefault();
     const email = document.getElementById('loginEmail').value;
@@ -147,13 +147,14 @@ async function handleLogin(event) {
     const result = await window.VERA_API.login(email);
     if (result.success) {
         closeLoginModal();
-        await loadDashboard();
+        // Force reload to show dashboard
+        window.location.reload();
     } else {
         alert('Login failed: ' + result.error);
     }
 }
 
-// Handle register form submission
+// Handle register form submission - FIXED
 async function handleRegister(event) {
     event.preventDefault();
     const fullName = document.getElementById('regFullName').value;
@@ -164,58 +165,40 @@ async function handleRegister(event) {
     const result = await window.VERA_API.register(email, fullName, phone, country);
     if (result.success) {
         closeRegisterModal();
-        await loadDashboard();
+        // Force reload to show dashboard
+        window.location.reload();
     } else {
         alert('Registration failed: ' + result.error);
     }
 }
 
-// Load dashboard after login
+// Load dashboard after login - FIXED
 async function loadDashboard() {
     if (!window.VERA_API.isLoggedIn()) {
-        showLoginModal();
+        // Don't auto-show login modal, just return
         return;
     }
     
-    const user = await window.VERA_API.getProfile();
-    
-    if (user) {
-        // Hide hero section, show dashboard
-        const hero = document.getElementById('hero');
-        const dashboard = document.getElementById('dashboardSection');
+    try {
+        const user = await window.VERA_API.getProfile();
         
-        if (hero) hero.style.display = 'none';
-        if (dashboard) {
-            dashboard.style.display = 'block';
-            document.getElementById('dashboardContent').innerHTML = `
-                <div style="text-align: center;">
-                    <div class="hero-v-container" style="margin: 0 auto 30px; width: 100px;">
-                        <img src="https://images4.imagebam.com/8f/50/7c/ME1CZ8LY_o.png" alt="VERA" style="width: 80px;">
-                    </div>
-                    <h3 class="display-sm">Welcome back, ${user.full_name}!</h3>
-                    <p style="color: var(--text-2); margin-top: 10px;">${user.email}</p>
-                    <hr style="margin: 30px 0; border-color: rgba(255,255,255,0.1);">
-                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px; margin-top: 30px;">
-                        <div class="glass-card" style="padding: 20px;">
-                            <h4>📱 Account Status</h4>
-                            <p style="color: #4ade80; margin-top: 10px;">Active</p>
-                        </div>
-                        <div class="glass-card" style="padding: 20px;">
-                            <h4>📅 Member Since</h4>
-                            <p style="margin-top: 10px;">${new Date(user.created_at).toLocaleDateString()}</p>
-                        </div>
-                        <div class="glass-card" style="padding: 20px;">
-                            <h4>🌍 Location</h4>
-                            <p style="margin-top: 10px;">${user.country || 'Not set'}</p>
-                        </div>
-                        <div class="glass-card" style="padding: 20px;">
-                            <h4>📞 Phone</h4>
-                            <p style="margin-top: 10px;">${user.phone_number || 'Not set'}</p>
-                        </div>
-                    </div>
-                </div>
-            `;
+        if (user) {
+// Show dashboard (keep hero/logo visible)
+const hero = document.getElementById('hero');
+const dashboard = document.getElementById('dashboardSection');
+
+// DON'T hide hero - keep the floating logo!
+// if (hero) hero.style.display = 'none';  ← COMMENT OUT OR DELETE THIS LINE
+if (dashboard) {
+    dashboard.style.display = 'block';
+    // ... rest of code stays the same
+}
+            // Hide login/register buttons if needed
+            const loginBtn = document.getElementById('loginNavBtn');
+            if (loginBtn) loginBtn.style.display = 'none';
         }
+    } catch (error) {
+        console.error('Error loading dashboard:', error);
     }
 }
 
@@ -397,4 +380,13 @@ document.addEventListener('DOMContentLoaded', async () => {
   }
 
   console.log('VERA — website initialized');
+
+  // Force check login status on every page load
+(function checkLoginOnLoad() {
+    const token = localStorage.getItem('vera_token');
+    if (token) {
+        authToken = token;
+        // Don't auto-show dashboard, let the main DOMContentLoaded handle it
+    }
+})();
 })();
