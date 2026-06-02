@@ -159,21 +159,27 @@ async function handleLogin(event) {
     }
 }
 
-// Handle register form submission - FIXED
+// Handle register form submission - WITH PASSWORD
 async function handleRegister(event) {
     event.preventDefault();
     const fullName = document.getElementById('regFullName').value;
     const email = document.getElementById('regEmail').value;
     const phone = document.getElementById('regPhone').value;
     const country = document.getElementById('regCountry').value;
+    const password = document.getElementById('regPassword').value;
     
-    const result = await window.VERA_API.register(email, fullName, phone, country);
+    if (!password || password.length < 6) {
+        showToast('Password must be at least 6 characters', 'error');
+        return;
+    }
+    
+    const result = await window.VERA_API.register(email, fullName, phone, country, password);
     if (result.success) {
         closeRegisterModal();
-        // Force reload to show dashboard
+        showToast('Registration successful! Welcome to VERA!', 'success');
         window.location.reload();
     } else {
-        alert('Registration failed: ' + result.error);
+        showToast('Registration failed: ' + result.error, 'error');
     }
 }
 
