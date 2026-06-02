@@ -110,6 +110,28 @@ window.VERA_API = {
     isLoggedIn: isLoggedIn,
 };
 
+// Toast notification function
+function showToast(message, type = 'info') {
+    const toast = document.createElement('div');
+    toast.className = `toast-notification ${type}`;
+    toast.innerHTML = `${type === 'success' ? '✅' : type === 'error' ? '❌' : '🔔'} ${message}`;
+    toast.style.cssText = `
+        position: fixed;
+        bottom: 30px;
+        right: 30px;
+        padding: 14px 24px;
+        background: rgba(10,10,20,0.95);
+        backdrop-filter: blur(12px);
+        border-left: 3px solid ${type === 'success' ? '#22c55e' : type === 'error' ? '#ef4444' : '#8B2BFF'};
+        border-radius: 12px;
+        color: white;
+        z-index: 10001;
+        animation: slideInRight 0.3s ease;
+    `;
+    document.body.appendChild(toast);
+    setTimeout(() => toast.remove(), 3000);
+}
+
 // ================================================
 // UI FUNCTIONS - Add these to your website
 // ================================================
