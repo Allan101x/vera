@@ -2,7 +2,7 @@
 // VERA BACKEND CONNECTION
 // ================================================
 
-const API_URL = 'http://localhost:5000/api';
+const API_URL = 'https://vera-backend-ocap.onrender.com/api';
 
 // Get stored token
 let authToken = localStorage.getItem('vera_token');
