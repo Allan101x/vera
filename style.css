@@ -786,3 +786,23 @@ footer { background: var(--deep); border-top: 1px solid var(--border); padding: 
     font-size: 10px;
   }
 }
+/* Dashboard Card Hover Effects */
+.glass-card {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.glass-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 20px 40px -12px rgba(139,43,255,0.2);
+}
+
+/* Dashboard Icon Animations */
+.glass-card .feat-icon-wrap {
+    transition: all 0.3s ease;
+}
+
+.glass-card:hover .feat-icon-wrap {
+    transform: scale(1.05);
+    background: rgba(139,43,255,0.2);
+    box-shadow: 0 0 20px rgba(139,43,255,0.3);
+}
