@@ -175,7 +175,6 @@ async function handleRegister(event) {
 // Load dashboard after login - FIXED
 async function loadDashboard() {
     if (!window.VERA_API.isLoggedIn()) {
-        // Don't auto-show login modal, just return
         return;
     }
     
@@ -183,25 +182,26 @@ async function loadDashboard() {
         const user = await window.VERA_API.getProfile();
         
         if (user) {
-// Show dashboard (keep hero/logo visible)
-const hero = document.getElementById('hero');
-const dashboard = document.getElementById('dashboardSection');
-
-// DON'T hide hero - keep the floating logo!
-// if (hero) hero.style.display = 'none';  ← COMMENT OUT OR DELETE THIS LINE
-if (dashboard) {
-    dashboard.style.display = 'block';
-    // ... rest of code stays the same
-}
-            // Hide login/register buttons if needed
-            const loginBtn = document.getElementById('loginNavBtn');
-            if (loginBtn) loginBtn.style.display = 'none';
+            const dashboard = document.getElementById('dashboardSection');
+            
+            if (dashboard) {
+                dashboard.style.display = 'block';
+                document.getElementById('dashboardContent').innerHTML = `
+                    <div style="text-align: center;">
+                        <div class="hero-v-container" style="margin: 0 auto 30px; width: 100px;">
+                            <img src="https://images4.imagebam.com/8f/50/7c/ME1CZ8LY_o.png" alt="VERA" style="width: 80px;">
+                        </div>
+                        <h3 class="display-sm">Welcome back, ${user.full_name || 'User'}!</h3>
+                        <p style="color: var(--text-2); margin-top: 10px;">${user.email}</p>
+                        <button onclick="window.VERA_API.logout()" class="btn btn-ghost" style="margin-top: 20px;">Logout</button>
+                    </div>
+                `;
+            }
         }
     } catch (error) {
         console.error('Error loading dashboard:', error);
     }
 }
-
 // Check if user is already logged in on page load
 document.addEventListener('DOMContentLoaded', async () => {
     if (window.VERA_API.isLoggedIn()) {
